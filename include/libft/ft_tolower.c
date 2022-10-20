@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 12:50:22 by loadjou           #+#    #+#             */
-/*   Updated: 2022/04/20 13:17:04 by loadjou          ###   ########.fr       */
+/*   Created: 2022/04/04 11:28:18 by loadjou           #+#    #+#             */
+/*   Updated: 2022/04/09 18:08:05 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_tolower(int c)
 {
-	size_t	len;
-
-	if (fd && s)
-	{
-		len = ft_strlen(s);
-		write(fd, s, len);
-	}
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }

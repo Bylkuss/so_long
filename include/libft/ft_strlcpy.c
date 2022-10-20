@@ -1,49 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/04 11:30:08 by loadjou           #+#    #+#             */
-/*   Updated: 2022/04/09 18:04:04 by loadjou          ###   ########.fr       */
+/*   Created: 2022/04/07 11:35:32 by loadjou           #+#    #+#             */
+/*   Updated: 2022/04/20 17:25:37 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	*str;
+	size_t	i;
 
-	str = (char *)s;
-	while (*str || c == '\0')
-	{
-		if (*(str++) == (char)c)
-			return (--str);
-	}
-	return (NULL);
+	i = ft_strlen(src);
+	if (dstsize == 0)
+		return (i);
+	while (*src && --dstsize)
+		*dst++ = *src++;
+	*dst = '\0';
+	return (i);
 }
 /*
 int	main(void)
 {
-	char	*p2;
-	char	*p1;
-
-	p2 = "1";
-	p1 = "2";
-	if (p1 > p2)
-	{
-		printf("P1 is greater than p2");
-	}
-	else if (p1 == p2)
-	{
-		printf("P1 equals p2");
-	}
-	else
-	{
-		printf("P2 is greater than p1");
-	}
-	return (0);
+	char	dest[] = "Hello";
+	char	src[] = " World";
+	printf("function return:    %lu\n", strlcpy(dest, src, 0));
+	printf("my function return: %zu\n", ft_strlcpy(dest, src, 0));
+	ft_strlcpy(dest, src, 0);
+	printf("%s\n", dest);
 }
 */

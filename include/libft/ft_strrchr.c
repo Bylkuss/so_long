@@ -1,24 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/12 12:50:22 by loadjou           #+#    #+#             */
-/*   Updated: 2022/04/20 13:17:04 by loadjou          ###   ########.fr       */
+/*   Created: 2022/04/04 11:49:05 by loadjou           #+#    #+#             */
+/*   Updated: 2022/04/25 11:16:36 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len;
+	int	i;
 
-	if (fd && s)
+	i = ft_strlen(s);
+	if (c == 0)
+		return (((char *)s) + i);
+	while (i >= 0)
 	{
-		len = ft_strlen(s);
-		write(fd, s, len);
+		if (s[i] == (char)c)
+			return (((char *)s) + i);
+		i--;
 	}
+	return (NULL);
 }
+/*
+int	main(int argc, char *argv[])
+{
+    if (argc == 3)
+    {
+        printf("ft_strchr:: %s \n", ft_strrchr(argv[1], argv[2][0]));
+        printf("ft_strchr:: %p \n", ft_strrchr(argv[1], argv[2][0]));
+    }
+    return (0);
+}
+*/

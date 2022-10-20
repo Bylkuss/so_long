@@ -1,4 +1,3 @@
-
 NAME = so_long
 
 LIBFT = include/libft/libft.a
@@ -58,4 +57,3 @@ GREEN = \033[1;32m
 YELLOW = \033[1;33m
 DEFAULT = \033[0m
 COMMIT = $(shell date "+%d %B %T")
-

@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 19:26:42 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/19 18:49:23 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/20 16:22:46 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	init_map(t_map *map)
 {
 	map = malloc(sizeof(t_map));
+	map->nb_movments = 0;
 	map->wall_x = 0;
 	map->wall_y = 0;
 	map->width = 0;
