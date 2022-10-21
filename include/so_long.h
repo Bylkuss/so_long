@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 19:27:08 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/20 15:25:10 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 14:20:55 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,15 @@
 # define KEY_D 2
 # define KEY_CLS 17
 
+/*******ERROR MESSAGES*******/
+
+# define WALLS "Your map must be surrounded by walls (1)\n"
+# define BADCOMPO "Error! Please insert good map format and try again!\nAt least 1 C, 1 P and 1 E\n"
+# define EXTFILE "Map file not accepted. Please enter a .ber file and try again !\n"
+# define MAPSIZE "Error, map too big! Please enter a map <= 1080x1920\n"
+# define CEBTE "Collect everything before to exit ^_^"
+# define ARGSMISS "\nPlease enter a map file after './so_long'\nExemple:\n./so_long map.ber\n"
+
 /**********************************STRUCTS*************************************/
 typedef struct s_img
 {
@@ -52,7 +61,7 @@ typedef struct s_img
 typedef struct s_map
 {
 	void	*mlx;
-	void	*window;
+	void	*win;
 	int		nb_movments;
 	t_img	img;
 	void	*game;
@@ -89,11 +98,13 @@ void		put_img(t_map *map);
 int			validate_move(int keycode, t_map *map);
 int			move(int keycode, t_map *map);
 void		collecting(t_map *map, int keycode);
-void		ft_exit(t_map *map, int keycode);
+void		ft_exit(t_map *map, char *msg, int exiit);
 void		check_map(void);
-
 int			press_key(int keycode, t_map *game);
 
+
+void	back_tracking(t_map *map);
+void	print_map(char **map);
 void		ft_up(t_map *map);
 void		ft_bottom(t_map *map);
 void		ft_right(t_map *map);

@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 13:18:25 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/20 16:18:36 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 14:51:52 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,7 @@
 void	check_map_file(char *path)
 {
 	if (!(ft_strnstr(&path[(int)ft_strlen(path) - 4], ".ber", 5)))
-		error_msg("Map file not accepted. Please enter a .ber file and try again !\n",
-					EXIT_FAILURE);
-}
-
-int	check_wall_up(t_map *map)
-{
-	while (map->map[map->wall_y][map->wall_y])
-	{
-		if (map->map[map->wall_y][map->wall_x] == '1')
-			map->wall_x++;
-		else
-			return (0);
-	}
-	map->wall_x--;
-	return (1);
+		error_msg(EXTFILE, EXIT_FAILURE);
 }
 
 void	check_vertical_wall(t_map *map, int width)
@@ -43,8 +29,7 @@ void	check_vertical_wall(t_map *map, int width)
 	while (map->map[i])
 	{
 		if (map->map[i][0] != '1' || map->map[i][j - 1] != '1')
-			error_msg("Your map must be surrounded by walls (1) Vert\n",
-						EXIT_FAILURE);
+			ft_exit(map, WALLS, EXIT_FAILURE);
 		i++;
 	}
 }
@@ -57,8 +42,7 @@ void	check_horiz_wall(t_map *map, int height)
 	while (map->map[height][i])
 	{
 		if (map->map[height][i] != '1')
-			error_msg("Your map must be surrounded by walls (1)\n",
-						EXIT_FAILURE);
+			ft_exit(map, WALLS, EXIT_FAILURE);
 		i++;
 	}
 }
@@ -75,6 +59,8 @@ void	check_component(char *str, t_map *map)
 	map->c = 0;
 	while (str[i])
 	{
+		if (!ft_strchr("1E0PEC\n", str[i]))
+			error_msg(BADCOMPO, 0);
 		if (str[i] == 'C')
 			map->c++;
 		else if (str[i] == 'E')
@@ -84,7 +70,7 @@ void	check_component(char *str, t_map *map)
 		i++;
 	}
 	if (map->c < 1 || p != 1 || e != 1)
-		error_msg("Error! Please insert good map format and try again!\nAt least 1 C, 1 P and 1 E\n", EXIT_FAILURE);
+		ft_exit(map, BADCOMPO, EXIT_FAILURE);
 }
 
 void	check_map(void)

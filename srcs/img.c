@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   img.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/10/21 13:03:48 by loadjou           #+#    #+#             */
+/*   Updated: 2022/10/21 14:12:02 by loadjou          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/so_long.h"
 
 void	ft_check_img_file(char *img)
@@ -51,42 +63,43 @@ void	put_img(t_map *map)
 		j++;
 		tmp = map->map[j];
 	}
-	mlx_string_put(map->mlx, map->window, 62, 60, 0x000000FF, "Moves: ");
-	mlx_string_put(map->mlx, map->window, 125, 60, 0x000000FF,
-			ft_itoa(map->nb_movments));
-	mlx_string_put(map->mlx, map->window, 300, 60, 0x000000FF,
-			"Collectibles: ");
-	mlx_string_put(map->mlx, map->window, 440, 60, 0x000000FF, ft_itoa(map->c));
+	mlx_string_put(map->mlx, map->win, 62, 60, 0x000000FF, "Moves: ");
+	mlx_string_put(map->mlx, map->win, 125, 60, 0x000000FF,
+		ft_itoa(map->nb_movments));
+	mlx_string_put(map->mlx, map->win, 300, 60, 0x000000FF, "Collectibles: ");
+	mlx_string_put(map->mlx, map->win, 440, 60, 0x000000FF, ft_itoa(map->c));
+}
+
+void	ft_player(t_map *map, int i, int j)
+{
+	mlx_put_image_to_window(map->mlx, map->win, map->img.land, i * 64, j * 64);
+	if (map->flag == 'r')
+		mlx_put_image_to_window(map->mlx, map->win, map->img.chara_right, i
+			* 64, j * 64);
+	else if (map->flag == 'l')
+		mlx_put_image_to_window(map->mlx, map->win, map->img.chara_left, i * 64,
+			j * 64);
+	else
+		mlx_put_image_to_window(map->mlx, map->win, map->img.chara, i * 64, j
+			* 64);
+	map->p_x = i;
+	map->p_y = j;
 }
 
 void	control_img(t_map *map, char c, int i, int j)
 {
 	if (c == '1')
-		mlx_put_image_to_window(map->mlx, map->window, map->img.wall, i * 64, j
-				* 64);
+		mlx_put_image_to_window(map->mlx, map->win, map->img.wall, i * 64, j
+			* 64);
 	else if (c == 'C')
-		mlx_put_image_to_window(map->mlx, map->window, map->img.chest, i * 64, j
-				* 64);
+		mlx_put_image_to_window(map->mlx, map->win, map->img.chest, i * 64, j
+			* 64);
 	else if (c == 'P')
-	{
-		mlx_put_image_to_window(map->mlx, map->window, map->img.land, i * 64, j
-				* 64);
-		if (map->flag == 'r')
-			mlx_put_image_to_window(map->mlx, map->window, map->img.chara_right,
-					i * 64, j * 64);
-		else if (map->flag == 'l')
-			mlx_put_image_to_window(map->mlx, map->window, map->img.chara_left,
-					i * 64, j * 64);
-		else
-			mlx_put_image_to_window(map->mlx, map->window, map->img.chara, i
-					* 64, j * 64);
-		map->p_x = i;
-		map->p_y = j;
-	}
+		ft_player(map, i, j);
 	else if (c == 'E')
-		mlx_put_image_to_window(map->mlx, map->window, map->img.rune, i * 64, j
-				* 64);
+		mlx_put_image_to_window(map->mlx, map->win, map->img.rune, i * 64, j
+			* 64);
 	else
-		mlx_put_image_to_window(map->mlx, map->window, map->img.land, i * 64, j
-				* 64);
+		mlx_put_image_to_window(map->mlx, map->win, map->img.land, i * 64, j
+			* 64);
 }

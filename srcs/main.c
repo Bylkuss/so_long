@@ -6,11 +6,32 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 19:26:42 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/20 16:22:46 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 14:58:07 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	free_double(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		tab[i] = NULL;
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
+void	ft_exit(t_map *map, char *msg, int exiit)
+{
+	free_double(map->map);
+	ft_putstr_fd(msg, 2);
+	exit(exiit);
+}
 
 void	init_map(t_map *map)
 {
@@ -29,18 +50,16 @@ int	main(int argc, char **argv)
 	int		fd;
 	t_map	map;
 
-	// t_game game;
 	if (argc == 2)
 	{
-
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
 			error_msg("File doesn't exit.\n", EXIT_FAILURE);
 		init_map(&map);
 		init_game(&map, fd);
+		free_double(map.map);
 	}
 	else
-		error_msg("\nPlease enter a map file after './so_long'\nExemple:\n./so_long map.ber\n",
-				EXIT_FAILURE);
+		error_msg(ARGSMISS, EXIT_FAILURE);
 	return (0);
 }

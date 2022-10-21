@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:53:18 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/20 10:51:28 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 14:51:14 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int find_line(t_map *map)
     }
     return 0;
 }
-*/
+
 
 void    make_ennemy(t_map *map)
 {
@@ -38,12 +38,16 @@ void    make_ennemy(t_map *map)
     // {
         while(map->map[5][x] && x < map->width)
         {
-            // mlx_put_image_to_window(map->mlx, map->window, map->img.land, x * 64, 5 * 64);
-            mlx_put_image_to_window(map->mlx, map->window, map->img.anim, x * 64, 5 * 64);
+            // mlx_put_image_to_window(map->mlx, map->window, map->img.land, x 
+                * 64, 5 * 64);
+            mlx_put_image_to_window(map->mlx, map->win, map->img.anim, x 
+                * 64, 5 * 64);
             // usleep(25000);
-            // mlx_put_image_to_window(map->mlx, map->window, map->img.land, x * 64, 5 * 64);
+            // mlx_put_image_to_window(map->mlx, map->window, map->img.land, 
+                x * 64, 5 * 64);
             x++;
             // usleep(25000);
         }
     // }
 }
+*/
