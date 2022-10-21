@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 19:26:42 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/21 16:41:01 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 19:17:40 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	free_double(char **tab)
 	i = 0;
 	while (tab[i])
 	{
-		tab[i] = NULL;
 		free(tab[i]);
+		tab[i] = NULL;
 		i++;
 	}
 	free(tab);
@@ -35,7 +35,6 @@ void	ft_exit(t_map *map, char *msg, int exiit)
 
 void	init_map(t_map *map)
 {
-	map = malloc(sizeof(t_map));
 	map->nb_movments = 0;
 	map->wall_x = 0;
 	map->wall_y = 0;

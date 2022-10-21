@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 13:03:48 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/21 17:20:37 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 19:21:43 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ void	put_img(t_map *map)
 	int		i;
 	int		j;
 	char	*tmp;
+	char	*msg;
 
+	msg = ft_itoa(map->nb_movments);
 	j = 0;
 	tmp = map->map[j];
 	while (tmp)
@@ -65,9 +67,12 @@ void	put_img(t_map *map)
 	}
 	mlx_string_put(map->mlx, map->win, 62, 60, 0x000000FF, "Moves: ");
 	mlx_string_put(map->mlx, map->win, 125, 60, 0x000000FF,
-			ft_itoa(map->nb_movments));
+			msg);
+	free (msg);
+	msg = ft_itoa(map->c);
 	mlx_string_put(map->mlx, map->win, 300, 60, 0x000000FF, "Collectibles: ");
-	mlx_string_put(map->mlx, map->win, 440, 60, 0x000000FF, ft_itoa(map->c));
+	mlx_string_put(map->mlx, map->win, 440, 60, 0x000000FF, msg);
+	free (msg);
 }
 
 void	ft_player(t_map *map, int i, int j)

@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/14 12:39:06 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/21 17:39:26 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 19:10:23 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ void	is_rectangular(t_map *map)
 
 void	valide_map(t_map *map)
 {
-	// printf("height %d width %d\n", map->height, map->width);
-	// print_map(map->map);
 	is_rectangular(map);
 	check_horiz_wall(map, 0);
 	check_horiz_wall(map, map->height - 1);
@@ -63,7 +61,7 @@ void	read_map(int fd, t_map *map)
 	{
 		map->height++;
 		if (map->line)
-			map->line = ft_strjoin(map->line, temp);
+			map->line = ft_strjoinn(map->line, temp);
 		else
 			map->line = ft_strdup(temp);
 		free(temp);

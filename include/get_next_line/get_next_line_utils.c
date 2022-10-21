@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 10:47:55 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/21 16:44:42 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 19:12:51 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ char	*ft_strjoinn(char *s1, char *s2)
 		i++;
 	}
 	str[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+	free (s1);
 	return (str);
 }

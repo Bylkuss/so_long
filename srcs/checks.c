@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/23 13:18:25 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/21 17:38:26 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 18:44:11 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ void	check_component(char *str, t_map *map)
 	map->c = 0;
 	while (str[i] != '\0')
 	{
-		// printf("%d ", i);
-		printf(" %c", str[i]);
 		if (!ft_strchr("1E0PEC\n", str[i]))
 			error_msg(BADCOMPO, 0);
 		else if (str[i] == 'C')
