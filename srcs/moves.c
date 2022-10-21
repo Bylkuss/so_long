@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 15:23:05 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/21 12:59:03 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 17:16:18 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_up(t_map *map)
 	if (map->map[map->p_y - 1][map->p_x] == 'E')
 	{
 		if (map->c == 0)
-			ft_exit(map, "Exiting...\n", EXIT_SUCCESS);
+			ft_exit(map, "Exited\n", EXIT_SUCCESS);
 		else
 			mlx_string_put(map->mlx, map->win, 100, 100, 0x00FF0000, CEBTE);
 	}
@@ -52,7 +52,7 @@ void	ft_right(t_map *map)
 	if (map->map[map->p_y][map->p_x + 1] == 'E')
 	{
 		if (map->c == 0)
-			ft_exit(map, "Exiting...\n", EXIT_SUCCESS);
+			ft_exit(map, "Exited\n", EXIT_SUCCESS);
 		else
 			mlx_string_put(map->mlx, map->win, 100, 100, 0x00FF0000, CEBTE);
 	}
@@ -75,7 +75,7 @@ void	ft_bottom(t_map *map)
 	if (map->map[map->p_y + 1][map->p_x] == 'E')
 	{
 		if (map->c == 0)
-			ft_exit(map, "Exiting...\n", EXIT_SUCCESS);
+			ft_exit(map, "Exited\n", EXIT_SUCCESS);
 		else
 			mlx_string_put(map->mlx, map->win, 100, 100, 0x00FF0000, CEBTE);
 	}
@@ -98,7 +98,7 @@ void	ft_left(t_map *map)
 	if (map->map[map->p_y][map->p_x - 1] == 'E')
 	{
 		if (map->c == 0)
-			ft_exit(map, "Exiting...\n", EXIT_SUCCESS);
+			ft_exit(map, "Exited\n", EXIT_SUCCESS);
 		else
 			mlx_string_put(map->mlx, map->win, 100, 100, 0x00FF0000, CEBTE);
 	}

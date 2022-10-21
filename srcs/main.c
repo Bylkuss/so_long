@@ -6,7 +6,7 @@
 /*   By: loadjou <loadjou@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 19:26:42 by loadjou           #+#    #+#             */
-/*   Updated: 2022/10/21 14:58:07 by loadjou          ###   ########.fr       */
+/*   Updated: 2022/10/21 16:41:01 by loadjou          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
+		check_map_file(argv[1]);
 		fd = open(argv[1], O_RDONLY);
 		if (fd < 0)
 			error_msg("File doesn't exit.\n", EXIT_FAILURE);
